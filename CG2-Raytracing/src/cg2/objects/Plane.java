@@ -1,5 +1,6 @@
 package cg2.objects;
 
+import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
 import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
@@ -21,8 +22,8 @@ public class Plane implements Shape {
 	}
 
 	@Override
-	public float intersection(Ray r) {
-		return 0;
+	public Hit intersection(Ray r) {
+		return null;
 	}
 
 }

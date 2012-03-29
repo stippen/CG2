@@ -16,7 +16,19 @@ public class Scene {
 	}
 	
 	public Hit intersect(Ray ray){
-		return null;
+		Hit hit = null;
+		for (Shape shape : shapeList) {
+			Hit temp = shape.intersection(ray);
+			if(temp != null){
+				if(hit == null){
+					hit = temp;
+				} else if(temp.getDistance() < hit.getDistance()){
+					hit = temp;
+				}
+			}
+		}
+		
+		return hit;
 	}
 
 	

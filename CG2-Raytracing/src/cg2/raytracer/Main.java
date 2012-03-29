@@ -10,10 +10,6 @@ public class Main {
 		String path = new String(
 				"/media/Daten/Studium/Computergrafik_II/Übung/Übungs_Bilder");
 
-		{
-			
-		}
-
 	}
 
 }

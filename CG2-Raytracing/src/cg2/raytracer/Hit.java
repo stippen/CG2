@@ -16,5 +16,9 @@ public class Hit {
 	public Shape getHitobjcet() {
 		return hitobjcet;
 	}
+
+	public float getDistance() {
+		return distance;
+	}
 	
 }

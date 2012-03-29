@@ -1,5 +1,6 @@
 package cg2.objects;
 
+import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
 import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
@@ -23,7 +24,7 @@ public class Sphere implements Shape {
 		this.color = color;
 	}
 
-	public float intersection(Ray r) {
+	public Hit intersection(Ray r) {		
 		float t1, t2;
 
 		float p = (r.getOrigin().sub(this.center)).dot(r.getDirection());
@@ -31,17 +32,17 @@ public class Sphere implements Shape {
 				* this.radius;
 
 		if (q < 0.0f) {
-			return -1.0f;
+			return null;
 		} else if (q == 0) {
-			return -p;
+			return new Hit(this, r, -p);
 		} else {
 			t1 = -p + (float) Math.sqrt(q);
 			t2 = -p - (float) Math.sqrt(q);
 
 			if (t1 < t2) {
-				return t1;
+				return new Hit(this, r, t1);
 			} else {
-				return t2;
+				return new Hit(this, r, t2);
 			}
 		}
 	}
