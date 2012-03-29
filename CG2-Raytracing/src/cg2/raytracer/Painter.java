@@ -1,4 +1,4 @@
-package cg2.warmup;
+package cg2.raytracer;
 
 import cg2.vecmath.Color;
 

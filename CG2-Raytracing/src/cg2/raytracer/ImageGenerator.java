@@ -1,4 +1,4 @@
-package cg2.warmup;
+package cg2.raytracer;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;

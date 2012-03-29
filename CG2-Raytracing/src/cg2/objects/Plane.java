@@ -1,25 +1,28 @@
 package cg2.objects;
 
+import cg2.raytracer.Ray;
 import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
 
-public class Plane extends Shape {
-	private int height;
-	private int width;
+public class Plane implements Shape {
+	private Vector normal;
+	private Vector point;
+	private Color color;
 	
-	public Plane(Vector center, Color color, int height, int width){
-		this.center = center;
+	public Plane(Vector n, Vector p, Color color){
 		this.color = color;
-		this.height = height;
-		this.width = width;
-	}
-	
-	public int getHeight() {
-		return height;
+		this.normal = n;
+		this.point = p;
 	}
 
-	public int getWidth() {
-		return width;
+	@Override
+	public Color getColor() {
+		return this.color;
+	}
+
+	@Override
+	public float intersection(Ray r) {
+		return 0;
 	}
 
 }
