@@ -25,8 +25,17 @@ public class Plane implements Shape {
 
 	@Override
 	public Hit intersection(Ray r) {
-		
-		return null;
+		float denominator = this.normal.dot(r.getNormalizeDirection());
+		if (denominator == 0){ //Strahl ist Parallel zur Ebene
+			return null;
+		}
+		float nominator = this.d - this.normal.dot(r.getOrigin());
+		float t = nominator / denominator;
+		if(t <r.getOrigin().z){
+			return null;
+		} else {
+			return new Hit(this, r, t);
+		}
 	}
 
 }

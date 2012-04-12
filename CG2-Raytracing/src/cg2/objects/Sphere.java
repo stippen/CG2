@@ -31,15 +31,15 @@ public class Sphere implements Shape {
 
 		if (q < 0.0f) {
 			return null;
-		} else if (q == 0 && -p > r.getOrigin().z) {
+		} else if (q == 0 && -p > 0) {
 			return new Hit(this, r, -p);
 		} else {
 			t1 = -p + (float) Math.sqrt(q);
 			t2 = -p - (float) Math.sqrt(q);
 
-			if (t1 > t2 && t1 > r.getOrigin().z) {
+			if (t1 < t2 && t1 > 0) {
 				return new Hit(this, r, t1);
-			} else if(t2 > r.getOrigin().z){
+			} else if(t2 > 0){
 				return new Hit(this, r, t2);
 			} else {
 				return null;
