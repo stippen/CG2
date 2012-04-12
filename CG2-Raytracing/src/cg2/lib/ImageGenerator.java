@@ -1,4 +1,4 @@
-package cg2.raytracer;
+package cg2.lib;
 
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
