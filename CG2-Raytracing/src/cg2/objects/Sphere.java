@@ -16,33 +16,33 @@ public class Sphere implements Shape {
 		this.radius = radius;
 	}
 
+	@Override
 	public Color getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
-
-	public Hit intersection(Ray r) {		
+	@Override
+	public Hit intersection(Ray r) {
 		float t1, t2;
+		Vector rayCenter = r.getOrigin().sub(this.center);
 
-		float p = (r.getOrigin().sub(this.center)).dot(r.getDirection());
-		float q = p * p - 2 * (r.getOrigin().dot(r.getOrigin())) - this.radius
-				* this.radius;
+		float p = rayCenter.dot(r.getNormalizeDirection());
+		float q = p * p - ((rayCenter.dot(rayCenter)) - this.radius * this.radius);
 
 		if (q < 0.0f) {
 			return null;
-		} else if (q == 0) {
+		} else if (q == 0 && -p > r.getOrigin().z) {
 			return new Hit(this, r, -p);
 		} else {
 			t1 = -p + (float) Math.sqrt(q);
 			t2 = -p - (float) Math.sqrt(q);
 
-			if (t1 < t2) {
+			if (t1 > t2 && t1 > r.getOrigin().z) {
 				return new Hit(this, r, t1);
-			} else {
+			} else if(t2 > r.getOrigin().z){
 				return new Hit(this, r, t2);
+			} else {
+				return null;
 			}
 		}
 	}

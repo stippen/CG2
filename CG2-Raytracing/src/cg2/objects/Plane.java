@@ -6,14 +6,16 @@ import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
 
 public class Plane implements Shape {
-	private Vector normal;
 	private Vector point;
+	private Vector normal;
 	private Color color;
+	private float d;
 	
-	public Plane(Vector n, Vector p, Color color){
-		this.color = color;
-		this.normal = n;
+	public Plane(Vector p, Vector n, Color color){
 		this.point = p;
+		this.normal = n.normalize();
+		this.color = color;
+		this.d = this.normal.dot(this.point);
 	}
 
 	@Override
@@ -23,6 +25,7 @@ public class Plane implements Shape {
 
 	@Override
 	public Hit intersection(Ray r) {
+		
 		return null;
 	}
 

@@ -8,21 +8,14 @@ public class Ray {
 	
 	public Ray(Vector o, Vector d){
 		this.origin = o;
-		d.normalize();
-		this.direction = d;
+		this.direction = d.normalize();
 	}
 	
 	public Vector getOrigin() {
 		return origin;
 	}
-	public void setOrigin(Vector origin) {
-		this.origin = origin;
-	}
-	public Vector getDirection() {
+	public Vector getNormalizeDirection() {
 		return direction;
-	}
-	public void setDirection(Vector direction) {
-		this.direction = direction;
 	}
 	
 	public Vector getPoint(float t){
