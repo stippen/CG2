@@ -1,19 +1,19 @@
 package cg2.raytracer;
 
-import cg2.objects.Shape;
+import cg2.objects.IShape;
 
 public class Hit {
-	private Shape hitobjcet;
+	private IShape hitobjcet;
 	private Ray ray;
 	private float distance;
 	
-	public Hit(Shape s, Ray r, float d){
+	public Hit(IShape s, Ray r, float d){
 		this.hitobjcet = s;
 		this.ray = r;
 		this.distance = d;
 	}
 
-	public Shape getHitobjcet() {
+	public IShape getHitobjcet() {
 		return hitobjcet;
 	}
 

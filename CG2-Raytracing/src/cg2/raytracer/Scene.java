@@ -3,28 +3,28 @@ package cg2.raytracer;
 import java.util.ArrayList;
 import java.util.List;
 
-import cg2.objects.Shape;
+import cg2.objects.IShape;
 import cg2.vecmath.Color;
 
 public class Scene {
-	private List<Shape> shapeList;
+	private List<IShape> shapeList;
 	private Color color;
 	
 
 	public Scene(){
-		this.shapeList = new ArrayList<Shape>();
+		this.shapeList = new ArrayList<IShape>();
 	}
 	
 	public Scene(Color color) {
-		this.shapeList = new ArrayList<Shape>();
+		this.shapeList = new ArrayList<IShape>();
 		this.color = color;
 	}
 
-	public void addShape(Shape s){
+	public void addShape(IShape s){
 		this.shapeList.add(s);
 	}
 
-	public List<Shape> getShapeList() {
+	public List<IShape> getShapeList() {
 		return shapeList;
 	}
 
@@ -34,7 +34,7 @@ public class Scene {
 	
 	public Hit intersect(Ray ray){
 		Hit hit = null;
-		for (Shape shape : shapeList) {
+		for (IShape shape : shapeList) {
 			Hit temp = shape.intersection(ray);
 			
 			if(temp != null){

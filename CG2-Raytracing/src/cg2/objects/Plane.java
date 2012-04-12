@@ -5,7 +5,7 @@ import cg2.raytracer.Ray;
 import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
 
-public class Plane implements Shape {
+public class Plane implements IShape {
 	private Vector point;
 	private Vector normal;
 	private Color color;
@@ -23,6 +23,14 @@ public class Plane implements Shape {
 		return this.color;
 	}
 
+	public Vector getPoint() {
+		return point;
+	}
+	
+	public Vector getNormalizeNormal() {
+		return normal;
+	}
+
 	@Override
 	public Hit intersection(Ray r) {
 		float denominator = this.normal.dot(r.getNormalizeDirection());
@@ -31,7 +39,7 @@ public class Plane implements Shape {
 		}
 		float nominator = this.d - this.normal.dot(r.getOrigin());
 		float t = nominator / denominator;
-		if(t <r.getOrigin().z){
+		if(t < r.getOrigin().z){
 			return null;
 		} else {
 			return new Hit(this, r, t);

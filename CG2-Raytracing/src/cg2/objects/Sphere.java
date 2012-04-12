@@ -5,7 +5,7 @@ import cg2.raytracer.Ray;
 import cg2.vecmath.Color;
 import cg2.vecmath.Vector;
 
-public class Sphere implements Shape {
+public class Sphere implements IShape {
 	private float radius;
 	private Vector center;
 	private Color color;
@@ -19,6 +19,14 @@ public class Sphere implements Shape {
 	@Override
 	public Color getColor() {
 		return color;
+	}
+
+	public float getRadius() {
+		return radius;
+	}
+
+	public Vector getCenter() {
+		return center;
 	}
 
 	@Override
@@ -37,7 +45,7 @@ public class Sphere implements Shape {
 			t1 = -p + (float) Math.sqrt(q);
 			t2 = -p - (float) Math.sqrt(q);
 
-			if (t1 < t2 && t1 > 0) {
+			if (t1 > t2 && t1 > 0) {
 				return new Hit(this, r, t1);
 			} else if(t2 > 0){
 				return new Hit(this, r, t2);
