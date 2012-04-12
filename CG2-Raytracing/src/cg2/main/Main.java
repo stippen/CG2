@@ -20,9 +20,9 @@ public class Main {
 		scene.addShape(new Sphere(new Vector(-0.6f, 0.6f, -2.0f), new Color(0, 1, 0), 0.6f));	
 		scene.addShape(new Sphere(new Vector(0.0f, 0.0f, 1.0f), new Color(1, 1, 0), 0.1f));
 
-		scene.addShape(new Plane(new Vector(0, -0.5f, 0), new Vector(0, 1f, 0), new Color(0, 0.6f, 0)));
+		scene.addShape(new Plane(new Vector(0, -5.0f, 0), new Vector(0, 1f, 0), new Color(0, 0.6f, 0)));
 		
-		scene.addShape(new AxisAlignedBox(new Vector(-3f, -3f, -3f), new Vector(3f, 3f, 1f), new Color(1, 1, 0)));
+		scene.addShape(new AxisAlignedBox(new Vector(-2f, -1f, -3f), new Vector(-0.5f, -0.5f, -2f), new Color(1, 1, 0)));
 		
 		Camera camera = new Camera(120.0f);
 		Image image = new Image(600, 400);
