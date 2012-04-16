@@ -1,9 +1,9 @@
 package cg2.objects;
 
+import cg2.lib.vecmath.Color;
+import cg2.lib.vecmath.Vector;
 import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
-import cg2.vecmath.Color;
-import cg2.vecmath.Vector;
 
 public class Sphere implements IShape {
 	private float radius;

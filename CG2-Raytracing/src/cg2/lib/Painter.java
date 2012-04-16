@@ -1,6 +1,6 @@
 package cg2.lib;
 
-import cg2.vecmath.Color;
+import cg2.lib.vecmath.Color;
 
 /**
  * Subclass <code>Painter</code> to specify how an image should be painted.

@@ -1,7 +1,7 @@
 package cg2.raytracer;
 
 import cg2.lib.Painter;
-import cg2.vecmath.Color;
+import cg2.lib.vecmath.Color;
 
 public class Raytracer implements Painter{
 	private Scene scene;

@@ -1,6 +1,6 @@
 package cg2.raytracer;
 
-import cg2.vecmath.Vector;
+import cg2.lib.vecmath.Vector;
 
 public class Ray {
 	private Vector origin;

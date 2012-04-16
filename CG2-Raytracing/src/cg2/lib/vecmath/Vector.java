@@ -1,4 +1,4 @@
-package cg2.vecmath;
+package cg2.lib.vecmath;
 
 import java.nio.FloatBuffer;
 

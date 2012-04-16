@@ -3,10 +3,10 @@ package cg2.objects;
 import java.util.ArrayList;
 import java.util.List;
 
+import cg2.lib.vecmath.Color;
+import cg2.lib.vecmath.Vector;
 import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
-import cg2.vecmath.Color;
-import cg2.vecmath.Vector;
 
 public class AxisAlignedBox implements IShape {
 	private Vector p;
@@ -21,13 +21,18 @@ public class AxisAlignedBox implements IShape {
 		splitBox();
 	}
 
-	private void splitBox() {
-		this.planes[0] = new Plane(p, new Vector(0, 0, -1), color);
-		this.planes[1] = new Plane(p, new Vector(0, -1, 0), color);
-		this.planes[2] = new Plane(p, new Vector(-1, 0, 0), color);
-		this.planes[3] = new Plane(q, new Vector(0, 0, 1), color);
-		this.planes[4] = new Plane(q, new Vector(0, 1, 0), color);
-		this.planes[5] = new Plane(q, new Vector(1, 0, 0), color);
+	public void setP(Vector p) {
+		this.p = p;
+	}
+
+
+	public void setQ(Vector q) {
+		this.q = q;
+	}
+
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 
 	@Override
@@ -73,6 +78,15 @@ public class AxisAlignedBox implements IShape {
 		boolean y = point.y >= p.y - 0.1 && point.y <= q.y + 0.1;
 		boolean z = point.z >= p.z - 0.1 && point.z <= q.z + 0.1;
 		return x && y && z;
+	}
+
+	private void splitBox() {
+		this.planes[0] = new Plane(p, new Vector(0, 0, -1), color);
+		this.planes[1] = new Plane(p, new Vector(0, -1, 0), color);
+		this.planes[2] = new Plane(p, new Vector(-1, 0, 0), color);
+		this.planes[3] = new Plane(q, new Vector(0, 0, 1), color);
+		this.planes[4] = new Plane(q, new Vector(0, 1, 0), color);
+		this.planes[5] = new Plane(q, new Vector(1, 0, 0), color);
 	}
 
 }
