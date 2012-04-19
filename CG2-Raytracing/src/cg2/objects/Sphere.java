@@ -5,12 +5,21 @@ import cg2.lib.vecmath.Vector;
 import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
 
+/**
+ * Eine Kugel im Raum
+ */
 public class Sphere implements IShape {
 	private float radius;
 	private Vector center;
 	private Color color;
 
-	public Sphere(Vector center, Color color, float radius) {
+	/**
+	 * Erzeugt eine Kugel im Raum
+	 * @param center Mittelpunkt der Kugel
+	 * @param radius Radius der Kugel
+	 * @param color Farbe der Kugel
+	 */
+	public Sphere(Vector center, float radius, Color color) {
 		this.center = center;
 		this.color = color;
 		this.radius = radius;
@@ -21,14 +30,6 @@ public class Sphere implements IShape {
 		return color;
 	}
 
-	public float getRadius() {
-		return radius;
-	}
-
-	public Vector getCenter() {
-		return center;
-	}
-
 	@Override
 	public Hit intersection(Ray r) {
 		float t1, t2;
@@ -37,9 +38,9 @@ public class Sphere implements IShape {
 		float p = rayCenter.dot(r.getNormalizeDirection());
 		float q = p * p - ((rayCenter.dot(rayCenter)) - this.radius * this.radius);
 
-		if (q < 0.0f) {
+		if (q < 0.0f) {//Wenn die Kugel nicht getroffen wurde
 			return null;
-		} else if (q == 0 && -p > 0) {
+		} else if (q == 0 && -p > 0) {//Wenn der Strahl die Kugel nur Streift
 			return new Hit(this, r, -p);
 		} else {
 			t1 = -p + (float) Math.sqrt(q);

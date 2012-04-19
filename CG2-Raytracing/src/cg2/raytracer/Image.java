@@ -1,5 +1,8 @@
 package cg2.raytracer;
 
+/**
+ * Ein Bild mit Höhe und Breite
+ */
 public class Image {
 	private int width;
 	private int height;

@@ -8,31 +8,27 @@ import cg2.lib.vecmath.Vector;
 import cg2.raytracer.Hit;
 import cg2.raytracer.Ray;
 
+/**
+ * Eine Achsen parallele Box im Raum
+ */
 public class AxisAlignedBox implements IShape {
 	private Vector p;
 	private Vector q;
 	private Color color;
 	private Plane[] planes = new Plane[6];
-
+	
+	/**
+	 * Erzeugt eine Achsen Parallele Box im Raum für die Gelten muss:</br>
+	 * 		alle Werte von des Ersten Paramerters müssen kleiner sein als die von zwietern Parameter
+	 * @param p die kleinere Ecke der Box
+	 * @param q die größere Ecke der Box
+	 * @param color die Farbe der Box
+	 */
 	public AxisAlignedBox(Vector p, Vector q, Color color) {
 		this.p = p;
 		this.q = q;
 		this.color = color;
 		splitBox();
-	}
-
-	public void setP(Vector p) {
-		this.p = p;
-	}
-
-
-	public void setQ(Vector q) {
-		this.q = q;
-	}
-
-
-	public void setColor(Color color) {
-		this.color = color;
 	}
 
 	@Override
@@ -44,9 +40,8 @@ public class AxisAlignedBox implements IShape {
 	public Hit intersection(Ray r) {
 		List<Hit> hits = new ArrayList<Hit>();
 
-		for (Plane plane : planes) {
-			float orient = plane.getNormalizeNormal().dot(
-					r.getOrigin().sub(plane.getPoint()));
+		for (Plane plane : planes) { //Ermittelt die Ebenen die in der Scene im Vordergrund liegen
+			float orient = plane.getNormalizeNormal().dot(r.getOrigin().sub(plane.getPoint()));
 			if (orient > 0) {
 				Hit hit = plane.intersection(r);
 				if (hit != null) {
@@ -55,10 +50,9 @@ public class AxisAlignedBox implements IShape {
 			}
 		}
 		if (hits.size() > 0) {
-			
 			Hit reselut = hits.get(0);
 			
-			for (int i = 1; i < hits.size(); i++){
+			for (int i = 1; i < hits.size(); i++){//Ermittelt dis Vorderste Fläche die Geschnitten wird 
 				if (reselut.getDistance() < hits.get(i).getDistance()) {
 					reselut = hits.get(i);
 				}

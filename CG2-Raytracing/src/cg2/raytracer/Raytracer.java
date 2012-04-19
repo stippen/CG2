@@ -3,6 +3,9 @@ package cg2.raytracer;
 import cg2.lib.Painter;
 import cg2.lib.vecmath.Color;
 
+/**
+ * Intitale Klasse des Raytracers
+ */
 public class Raytracer implements Painter{
 	private Scene scene;
 	private Camera camera;
@@ -11,6 +14,7 @@ public class Raytracer implements Painter{
 		this.scene = scene;
 		this.camera = camera;
 	}	
+	
 	@Override
 	public Color pixelColorAt(int x, int y, int width, int height) {
 		Ray ray = this.camera.generateRay(x, y, width, height);

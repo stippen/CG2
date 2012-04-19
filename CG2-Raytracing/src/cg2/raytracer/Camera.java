@@ -2,6 +2,9 @@ package cg2.raytracer;
 
 import cg2.lib.vecmath.Vector;
 
+/**
+ * Eine Kamera im Raum
+ */
 public class Camera {
 	private Vector positon;
 	private Vector direction;
@@ -16,7 +19,7 @@ public class Camera {
 		this.direction = new Vector(0, 0, -1).normalize();
 		this.up = new Vector(0, 1, 0).normalize();
 		
-		this.z = (float) -(this.w/(2.0 * Math.tan(Math.toRadians(fieldOfViewX) / 2.0f)));
+		this.z = (float) -(this.w/(2.0 * Math.tan(Math.toRadians(this.fieldOfViewX) / 2.0f)));
 	}
 	
 //	public Camera(Vector p, Vector d, Vector u, float w){
@@ -42,6 +45,14 @@ public class Camera {
 		return fieldOfViewX;
 	}
 	
+	/**
+	 * Erzeugt einen Strahl vom Uhrsprung der Kamera zu einem Punkt im Bild
+	 * @param i Die X-Koordinate des Pixels
+	 * @param j Die Y-Koordinate des Pixels
+	 * @param width Die Breite des Bildes
+	 * @param height Die Höhe des Bildes
+	 * @return Ein Strahl durch eine Punkt des Bildes
+	 */
 	public Ray generateRay(int i, int j, int width, int height){
 		float h = (height * this.w) / width;
 		float x = (- this.w / 2.0f) + ((float)i + 0.5f) * this.w / width;
