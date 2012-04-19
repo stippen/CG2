@@ -16,6 +16,7 @@ public class AxisAlignedBox implements IShape {
 	private Vector q;
 	private Color color;
 	private Plane[] planes = new Plane[6];
+	private float toleranz; //5 Prozent der Kürzesten Seite
 	
 	/**
 	 * Erzeugt eine Achsen Parallele Box im Raum für die Gelten muss:</br>
@@ -29,6 +30,7 @@ public class AxisAlignedBox implements IShape {
 		this.q = q;
 		this.color = color;
 		splitBox();
+		genrateToleranz();
 	}
 
 	@Override
@@ -68,9 +70,9 @@ public class AxisAlignedBox implements IShape {
 	}
 
 	private boolean koordinatentest(Vector point) {
-		boolean x = point.x >= p.x - 0.1 && point.x <= q.x + 0.1;
-		boolean y = point.y >= p.y - 0.1 && point.y <= q.y + 0.1;
-		boolean z = point.z >= p.z - 0.1 && point.z <= q.z + 0.1;
+		boolean x = point.x >= p.x - this.toleranz && point.x <= q.x + this.toleranz;
+		boolean y = point.y >= p.y - this.toleranz && point.y <= q.y + this.toleranz;
+		boolean z = point.z >= p.z - this.toleranz && point.z <= q.z + this.toleranz;
 		return x && y && z;
 	}
 
@@ -83,4 +85,13 @@ public class AxisAlignedBox implements IShape {
 		this.planes[5] = new Plane(q, new Vector(1, 0, 0), color);
 	}
 
+	
+	private void genrateToleranz() {
+		float x = q.x - p.x;
+		float y = q.y - p.y;
+		float z = q.z - p.z;
+		
+		float min = Math.min(x, Math.min(y, z));
+		this.toleranz = min * 0.05f;
+	}
 }
